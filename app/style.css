@@ -1,0 +1,206 @@
+/* Bargain Beacon — one stylesheet, no framework, system fonts only. */
+
+:root {
+  --navy: #0f2a4a;
+  --navy-soft: #173a63;
+  --amber: #f5a623;
+  --paper: #faf7f0;
+  --ink: #1c1c1e;
+  --muted: #5c5c60;
+  --line: #e3ddd0;
+  --green: #0b7a3e;
+  --green-bg: #e2f4e8;
+  --blue: #145da0;
+  --blue-bg: #e2eefb;
+  --tan: #8a6d00;
+  --tan-bg: #fdf3d0;
+  --card: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+a { color: var(--blue); }
+a:hover { text-decoration-thickness: 2px; }
+
+/* Masthead */
+.masthead { background: var(--navy); color: #fff; padding: 28px 0 22px; }
+.masthead .brand { margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.5px; }
+.masthead .brand a { color: #fff; text-decoration: none; }
+.masthead .brand a::before { content: "◆ "; color: var(--amber); }
+.masthead .tagline { margin: 6px 0 0; color: #c9d6e8; font-size: 17px; }
+
+/* Intro + controls */
+.intro { margin: 22px 0 14px; font-size: 17px; }
+.controls {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  margin: 0 0 12px;
+}
+.controls .search {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+.controls .search input {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #c9c4b8;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 400;
+  color: var(--ink);
+  background: #fff;
+}
+.filter-box > summary { display: none; }
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+}
+.filter-grid label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 700; color: var(--muted); }
+.filter-grid select {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #c9c4b8;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 400;
+  color: var(--ink);
+  background: #fff;
+}
+.filter-grid button {
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--amber);
+  color: #231600;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.filter-grid button:hover { background: #ffb93d; }
+.count { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+
+/* Deal grid */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.card.verdict-new-low { border-left-color: var(--green); }
+.card.verdict-routine { border-left-color: #b9b2a4; }
+.badge {
+  display: inline-block;
+  align-self: flex-start;
+  margin: 0 0 10px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  background: var(--blue-bg);
+  color: var(--blue);
+}
+.verdict-new-low .badge { background: var(--green-bg); color: var(--green); }
+.verdict-routine .badge { background: var(--tan-bg); color: var(--tan); }
+.card h2 { margin: 0 0 4px; font-size: 19px; line-height: 1.3; }
+.card h2 a { color: var(--ink); text-decoration: none; }
+.card h2 a:hover { color: var(--blue); text-decoration: underline; }
+.meta { margin: 0 0 10px; color: var(--muted); font-size: 14px; }
+.meta .store { font-weight: 700; color: var(--ink); }
+.price { margin: 0 0 2px; font-size: 17px; }
+.price strong { font-size: 26px; }
+.price s { color: var(--muted); }
+.price .off {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #fde8e8;
+  color: #b3261e;
+  font-size: 14px;
+  font-weight: 800;
+}
+.save { margin: 0 0 8px; font-weight: 700; color: var(--green); }
+.checked { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+.actions { margin: auto 0 0; display: flex; gap: 14px; align-items: center; }
+.store-link {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.store-link:hover { background: var(--navy-soft); }
+.detail-link { font-weight: 600; }
+.empty { grid-column: 1 / -1; padding: 32px; text-align: center; color: var(--muted); }
+
+/* Detail page */
+.detail { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; margin: 20px 0; }
+.detail h1 { margin: 0 0 6px; font-size: 30px; line-height: 1.25; }
+.detail .price.big strong { font-size: 38px; }
+.verdict-box { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin: 18px 0; }
+.verdict-box h2 { margin: 0 0 6px; font-size: 17px; }
+.verdict-box p { margin: 0; }
+.detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 18px 0; }
+.detail dt { font-weight: 700; }
+.detail dd { margin: 0; }
+.big-link { font-size: 18px; padding: 12px 20px; }
+.also { margin: 22px 0 0; }
+.also h2 { font-size: 19px; margin: 0 0 8px; }
+.also table { width: 100%; border-collapse: collapse; }
+.also th, .also td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.note { color: var(--muted); font-size: 14px; margin: 18px 0 0; }
+
+/* Footer */
+footer { margin: 40px auto 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 18px; }
+footer p { margin: 0 0 10px; }
+footer strong { color: var(--ink); }
+
+/* Phone */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .filter-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .masthead .brand { font-size: 27px; }
+  .masthead .tagline { font-size: 15px; }
+  .grid { grid-template-columns: 1fr; }
+  .filter-box > summary {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 2px 0 10px;
+  }
+  .filter-grid { grid-template-columns: 1fr; }
+  .filter-grid button { width: 100%; }
+  .detail { padding: 16px; }
+  .detail h1 { font-size: 24px; }
+  .detail dl { grid-template-columns: 1fr; gap: 2px; }
+  .detail dd { margin-bottom: 8px; }
+  .also table { font-size: 14px; }
+}
